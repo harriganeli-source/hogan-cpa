@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Thin outer circle -->
+  <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <!-- H left stem -->
+  <rect x="27" y="23" width="7" height="54" rx="0.75" fill="currentColor"/>
+  <!-- H right stem -->
+  <rect x="66" y="23" width="7" height="54" rx="0.75" fill="currentColor"/>
+  <!-- H crossbar — extends slightly beyond stems (ledger line reference) -->
+  <rect x="22" y="46" width="56" height="3" rx="0.75" fill="currentColor"/>
+</svg>
