@@ -278,17 +278,15 @@
         const differSection = document.querySelector('.differ');
         if (differSection) observer.observe(differSection);
 
-        // Phone page: hero uses justify-content:center which centers content in a ~842px tall mobile box.
-        // Override to top-align and compute the correct top padding to clear the nav.
-        function fixHeroAlignment() {
+        // Mobile only: hero uses justify-content:center which vertically centers content in ~842px tall box.
+        // Override to top-align so headline sits near the nav, not the middle of the screen.
+        if (window.innerWidth <= 768) {
             const navHeight = document.querySelector('.site-header').getBoundingClientRect().height;
             const heroPt = parseFloat(getComputedStyle(hero).paddingTop);
             const innerPad = Math.max(navHeight - heroPt + 12, 8) + 'px';
             hero.style.setProperty('justify-content', 'flex-start', 'important');
-            hero.style.setProperty('align-items', 'flex-start', 'important');
             document.querySelector('.hero-inner').style.setProperty('padding-top', innerPad, 'important');
         }
-        fixHeroAlignment();
     </script>
 
 </body>
