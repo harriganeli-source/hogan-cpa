@@ -9,8 +9,8 @@
     --dark2:   #3E1A42;
     --cream:   #F7F2F7;
     --cream2:  #EDE4EE;
-    --gold:    #C47FA0;
-    --gold2:   #A8638A;
+    --gold:    #C9974A;
+    --gold2:   #A87B38;
     --slate:   #7A5880;
     --muted:   #9A7AA5;
     --white:   #FFFFFF;
@@ -144,12 +144,12 @@ a { text-decoration: none; color: inherit; }
     flex-shrink: 0;
 }
 .nav-logo-text {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    font-weight: 400;
-    letter-spacing: 0.04em;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
     color: var(--white);
-    margin-left: 0.65rem;
+    margin-left: 0.75rem;
     line-height: 1.2;
 }
 .logo-name {
