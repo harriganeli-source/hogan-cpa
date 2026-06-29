@@ -744,7 +744,12 @@ a { text-decoration: none; color: inherit; }
 /* ---- INNER PAGE HERO ---- */
 
 .page-hero {
-    background: var(--dark);
+    background-color: var(--dark);
+    background-image:
+        linear-gradient(rgba(92, 46, 96, 0.82), rgba(92, 46, 96, 0.82)),
+        url('../images/background-florida.png');
+    background-size: cover;
+    background-position: center;
     padding: 9rem 2rem 4rem;
     border-bottom: 1px solid rgba(255,255,255,0.06);
 }
