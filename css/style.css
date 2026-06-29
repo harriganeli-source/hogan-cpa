@@ -9,8 +9,8 @@
     --dark2:   #1F1138;
     --cream:   #F5F1F8;
     --cream2:  #EBE4F2;
-    --gold:    #C4A472;
-    --gold2:   #A88A5A;
+    --gold:    #C4724A;
+    --gold2:   #A85C38;
     --slate:   #6B5A80;
     --muted:   #8A7A9A;
     --white:   #FFFFFF;
@@ -133,13 +133,37 @@ a { text-decoration: none; color: inherit; }
 .nav-logo {
     display: flex;
     align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+.nav-logo-mark {
+    height: 42px;
+    width: 42px;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
     flex-shrink: 0;
 }
-.nav-logo-img {
-    height: 72px;
-    width: auto;
-    filter: brightness(0) invert(1);
-    opacity: 0.92;
+.nav-logo-wordmark {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    gap: 0.2rem;
+}
+.nav-logo-name {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: 0.04em;
+}
+.nav-logo-sub {
+    font-family: var(--sans);
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
 }
 .logo-name {
     font-family: var(--sans);
@@ -241,8 +265,8 @@ a { text-decoration: none; color: inherit; }
 .hero {
     background-color: var(--dark);
     background-image:
-        linear-gradient(to right, rgba(31, 17, 56, 0.88) 0%, rgba(31, 17, 56, 0.6) 50%, rgba(31, 17, 56, 0.2) 100%),
-        url('../images/banner-image.png');
+        linear-gradient(to right, rgba(31, 17, 56, 0.65) 0%, rgba(31, 17, 56, 0.35) 50%, rgba(31, 17, 56, 0.1) 100%),
+        url('../images/banner-purple.png');
     background-size: cover;
     background-position: center center;
     min-height: 75vh;
