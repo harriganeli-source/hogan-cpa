@@ -184,7 +184,7 @@
         const header = document.querySelector('.site-header');
         const hero = document.querySelector('.hero');
         const onScroll = () => {
-            header.classList.toggle('scrolled', window.scrollY > hero.offsetHeight - 80);
+            header.classList.toggle('scrolled', window.scrollY > hero.offsetHeight * 0.25);
         };
         window.addEventListener('scroll', onScroll, { passive: true });
 
