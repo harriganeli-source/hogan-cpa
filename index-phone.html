@@ -18,7 +18,6 @@
             background-image:
                 linear-gradient(to right, rgba(20, 8, 25, 0.62) 0%, rgba(20, 8, 25, 0.35) 45%, rgba(20, 8, 25, 0.0) 70%),
                 url('images/phone on desktop.jpg');
-            background-position: center center;
         }
         .hero-text {
             text-align: left;
@@ -45,6 +44,10 @@
             background: var(--dark);
             border-bottom-color: rgba(255,255,255,0.08);
         }
+        @media (min-width: 769px) {
+            .hero { background-position: center 35%; }
+            .hero-headline { font-size: clamp(2.2rem, 3.2vw, 3.2rem); }
+        }
         @media (max-width: 768px) {
             .hero {
                 background-image:
@@ -52,7 +55,6 @@
                     url('images/iphone bg.png');
                 background-position: center center;
             }
-            .hero-headline { font-size: 1.55rem; line-height: 1.2; }
         }
     </style>
 </head>
