@@ -5,14 +5,14 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-    --dark:    #1B3B30;
-    --dark2:   #142C24;
-    --cream:   #F4F0E8;
-    --cream2:  #EAE4D8;
+    --dark:    #2C1A4E;
+    --dark2:   #1F1138;
+    --cream:   #F5F1F8;
+    --cream2:  #EBE4F2;
     --gold:    #C4A472;
     --gold2:   #A88A5A;
-    --slate:   #4A6058;
-    --muted:   #6B8079;
+    --slate:   #6B5A80;
+    --muted:   #8A7A9A;
     --white:   #FFFFFF;
     --serif:   'Cormorant Garamond', Georgia, serif;
     --sans:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -241,7 +241,7 @@ a { text-decoration: none; color: inherit; }
 .hero {
     background-color: var(--dark);
     background-image:
-        linear-gradient(to right, rgba(16, 38, 30, 0.78) 0%, rgba(16, 38, 30, 0.45) 50%, rgba(16, 38, 30, 0.1) 100%),
+        linear-gradient(to right, rgba(31, 17, 56, 0.88) 0%, rgba(31, 17, 56, 0.6) 50%, rgba(31, 17, 56, 0.2) 100%),
         url('../images/banner-image.png');
     background-size: cover;
     background-position: center center;
