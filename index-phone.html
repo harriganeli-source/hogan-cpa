@@ -58,9 +58,7 @@
                 background-position: center -50px;
                 min-height: calc(100vw * 2.16);
             }
-            .nav-inner { height: 68px; }
-            .home .hero { padding-top: 68px !important; }
-            .home .hero-inner { padding: 0.5rem 1.5rem 4rem !important; }
+            .home .hero-inner { padding-top: 0 !important; padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
             .hero-sub { font-size: 0.9rem; line-height: 1.6; margin-bottom: 7rem; }
             .hero-ctas { flex-wrap: nowrap; }
             .hero-ctas .btn-primary, .hero-ctas .btn-ghost { font-size: 0.75rem; padding: 0.75rem 1rem; letter-spacing: 0.08em; }
@@ -101,7 +99,7 @@
                 <p class="hero-sub">A lot of people come to me carrying real anxiety about taxes and the IRS. That's exactly where I do my best work — turning something that feels overwhelming into something you understand and can plan around.</p>
                 <div class="hero-ctas">
                     <a href="contact.html" class="btn-primary">Schedule a Consult</a>
-                    <a href="about.html" class="btn-ghost">Meet Sarah</a>
+                    <a href="about.html" class="btn-ghost">About Sarah</a>
                 </div>
             </div>
         </div>
@@ -279,6 +277,16 @@
 
         const differSection = document.querySelector('.differ');
         if (differSection) observer.observe(differSection);
+
+        // Force-zero the hero-inner top padding on mobile (CSS override not applying reliably)
+        function fixHeroTopPadding() {
+            if (window.innerWidth <= 768) {
+                const heroInner = document.querySelector('.hero-inner');
+                if (heroInner) heroInner.style.setProperty('padding-top', '0', 'important');
+            }
+        }
+        fixHeroTopPadding();
+        window.addEventListener('resize', fixHeroTopPadding);
     </script>
 
 </body>
