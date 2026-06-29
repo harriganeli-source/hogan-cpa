@@ -1,0 +1,23 @@
+/* Purple theme override — import after style.css */
+:root {
+    --dark:    #2C1A4E;
+    --dark2:   #1F1138;
+    --cream:   #F5F1F8;
+    --cream2:  #EBE4F2;
+    --gold:    #C4A472;
+    --gold2:   #A88A5A;
+    --slate:   #6B5A80;
+    --muted:   #8A7A9A;
+    --white:   #FFFFFF;
+}
+
+/* Hero trend lines: gold on plum */
+.hero-trendline { opacity: 0.09; }
+
+
+/* Service featured cards */
+.service-card--featured { background: var(--dark2); border-top-color: var(--gold); }
+.service-card--featured:hover { background: var(--dark); }
+
+/* About quote border */
+.about-quote { border-left-color: var(--gold); }
