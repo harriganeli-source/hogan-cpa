@@ -143,6 +143,10 @@ a { text-decoration: none; color: inherit; }
     opacity: 0.92;
     flex-shrink: 0;
 }
+.nav-logo-mark--color {
+    filter: none;
+    opacity: 1;
+}
 .nav-logo-text {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 1.35rem;
