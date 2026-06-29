@@ -251,7 +251,9 @@ a { text-decoration: none; color: inherit; }
 
 .hero {
     background-color: var(--dark);
-    background-image: url('../images/background-florida.png');
+    background-image:
+        linear-gradient(rgba(30, 10, 40, 0.42), rgba(30, 10, 40, 0.42)),
+        url('../images/background-florida.png');
     background-size: cover;
     background-position: center center;
     min-height: 75vh;
