@@ -163,10 +163,10 @@ a { text-decoration: none; color: inherit; }
     color: var(--white);
 }
 .nav-logo-sub {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.54rem;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 0.72rem;
     font-weight: 500;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.65);
 }
