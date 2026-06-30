@@ -150,6 +150,7 @@ a { text-decoration: none; color: inherit; }
 .nav-logo-text {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-left: 0.75rem;
     line-height: 1;
     gap: 3px;
