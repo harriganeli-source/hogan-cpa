@@ -9,62 +9,10 @@
     <meta property="og:title" content="Hogan CPA Firm | Gulf Breeze, FL">
     <meta property="og:description" content="Tax preparation, bookkeeping, fractional CFO, and MDL litigation support for small businesses across the Gulf Coast.">
     <meta property="og:image" content="https://hogan-cpa.vercel.app/images/hogan headshot on gold.png">
-    <meta property="og:url" content="https://hogan-cpa.vercel.app/index-phone.html">
+    <meta property="og:url" content="https://hogan-cpa.vercel.app">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css?v=2">
-    <style>
-        .hero {
-            background-image:
-                linear-gradient(to right, rgba(20, 8, 25, 0.62) 0%, rgba(20, 8, 25, 0.35) 45%, rgba(20, 8, 25, 0.0) 70%),
-                url('images/phone on desktop.jpg');
-        }
-        .hero-text {
-            text-align: left;
-            margin: 0;
-        }
-        .hero-sub {
-            margin-left: 0;
-            color: rgba(255,255,255,0.9);
-        }
-        .hero-ctas {
-            justify-content: flex-start;
-        }
-        .hero-headline em {
-            color: #D0B0E8;
-        }
-        .hero .btn-primary {
-            background: var(--dark);
-            color: var(--white);
-        }
-        .hero .btn-primary:hover {
-            background: var(--dark2);
-        }
-        .home .site-header {
-            background: var(--dark);
-            border-bottom-color: rgba(255,255,255,0.08);
-        }
-        @media (min-width: 769px) {
-            .hero { background-position: center 35%; min-height: 88vh; }
-            .hero-headline { font-size: clamp(2.2rem, 3.2vw, 3.2rem); }
-        }
-        @media (max-width: 768px) {
-            .hero {
-                background-image:
-                    linear-gradient(to bottom, rgba(20, 8, 25, 0.78) 0%, rgba(20, 8, 25, 0.45) 45%, rgba(20, 8, 25, 0.0) 75%),
-                    linear-gradient(to right, rgba(20, 8, 25, 0.3) 0%, rgba(20, 8, 25, 0.0) 60%),
-                    url('images/mobile bg 3.png');
-                background-size: 110% auto;
-                background-position: center -60px;
-                min-height: calc(100vw * 2.16);
-            }
-            .home .hero-inner { padding-top: 0 !important; padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
-            .hero-headline { margin-bottom: 1rem; }
-            .hero-sub { font-size: 0.9rem; line-height: 1.6; margin-bottom: 11rem; }
-            .hero-ctas { flex-wrap: nowrap; }
-            .hero-ctas .btn-primary, .hero-ctas .btn-ghost { font-size: 0.75rem; padding: 0.75rem 1rem; letter-spacing: 0.08em; }
-        }
-    </style>
 </head>
 <body class="home">
 
@@ -96,10 +44,10 @@
     <section class="hero">
         <div class="hero-inner">
             <div class="hero-text">
-<h1 class="hero-headline">Expert help, in your back pocket.<br><em>I take the fear out of tax time.</em></h1>
-                <p class="hero-sub">A lot of people come to me carrying real anxiety about taxes and the IRS. That's exactly where I do my best work — turning something that feels overwhelming into something you understand and can plan around.</p>
+<h1 class="hero-headline">18 years on the<br>client side of finance.<br><em>Now working for yours.</em></h1>
+                <p class="hero-sub">For nearly two decades, I managed financial operations from inside real businesses — sitting in the room where the decisions were made. When I opened my own firm in Gulf Breeze, I wanted to bring that experience directly to the people running businesses here.</p>
                 <div class="hero-ctas">
-                    <a href="contact.html" class="btn-primary">Schedule a Consult</a>
+                    <a href="contact.html" class="btn-primary">Schedule a Consultation</a>
                     <a href="about.html" class="btn-ghost">About Sarah</a>
                 </div>
             </div>
@@ -145,7 +93,7 @@
             </div>
             <div class="about-snap-quote">
                 <blockquote>"She doesn't just know the numbers, she <strong>understands the story behind them.</strong>"</blockquote>
-                <cite>— Aaron Hayek, ChemPro Services, Inc.</cite>
+                <cite>— Aaron Hayek,<br><strong>ChemPro Services, Inc.</strong></cite>
             </div>
         </div>
     </section>
@@ -187,9 +135,9 @@
     <section class="testimonial-band">
         <div class="testimonial-inner">
             <blockquote class="testimonial-quote">
-                "Sarah has been a trusted advisor to me for many years. While her accounting and tax expertise are exceptional, what I value most is her ability to understand the realities of running a business. She has helped me navigate the complexities of operating across multiple state jurisdictions — providing clear guidance on accounting, tax, and compliance. She doesn't just know the numbers, she <strong>understands the story behind them.</strong>"
+                "Sarah has been a trusted advisor to me for many years. While her accounting and tax expertise are exceptional, what I value most is her ability to understand the realities of running a business. She has helped me navigate the complexities of operating across multiple state jurisdictions — providing clear guidance on accounting, tax, and compliance. She doesn't just know the numbers,<br><strong>she understands the story behind them.</strong>"
             </blockquote>
-            <cite class="testimonial-cite">Aaron Hayek &nbsp;·&nbsp; ChemPro Services, Inc.</cite>
+            <cite class="testimonial-cite">Aaron Hayek<br><strong>ChemPro Services, Inc.</strong></cite>
         </div>
     </section>
 
@@ -236,7 +184,8 @@
         const header = document.querySelector('.site-header');
         const hero = document.querySelector('.hero');
         const onScroll = () => {
-            header.classList.toggle('scrolled', window.scrollY > hero.offsetHeight * 0.25);
+            const threshold = window.innerWidth < 768 ? 10 : hero.offsetHeight * 0.25;
+            header.classList.toggle('scrolled', window.scrollY > threshold);
         };
         window.addEventListener('scroll', onScroll, { passive: true });
 
@@ -278,16 +227,6 @@
 
         const differSection = document.querySelector('.differ');
         if (differSection) observer.observe(differSection);
-
-        // Mobile only: hero uses justify-content:center which vertically centers content in ~842px tall box.
-        // Override to top-align so headline sits near the nav, not the middle of the screen.
-        if (window.innerWidth <= 768) {
-            const navHeight = document.querySelector('.site-header').getBoundingClientRect().height;
-            const heroPt = parseFloat(getComputedStyle(hero).paddingTop);
-            const innerPad = Math.max(navHeight - heroPt + 24, 8) + 'px';
-            hero.style.setProperty('justify-content', 'flex-start', 'important');
-            document.querySelector('.hero-inner').style.setProperty('padding-top', innerPad, 'important');
-        }
     </script>
 
 </body>
