@@ -749,7 +749,7 @@ a { text-decoration: none; color: inherit; }
         linear-gradient(rgba(92, 46, 96, 0.82), rgba(92, 46, 96, 0.82)),
         url('../images/background-florida.png');
     background-size: cover;
-    background-position: center;
+    background-position: 35% 30%;
     padding: 9rem 2rem 4rem;
     border-bottom: 1px solid rgba(255,255,255,0.06);
 }
