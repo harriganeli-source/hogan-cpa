@@ -13,6 +13,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
+        @media (min-width: 769px) {
+            .about-body-inner {
+                grid-template-columns: 2fr 1fr;
+                grid-template-areas: "text photo" "text cta";
+                grid-template-rows: auto 1fr;
+            }
+            .about-body-text  { grid-area: text; }
+            .about-sidebar    { grid-area: photo; position: sticky; top: 100px; }
+            .about-sidebar-cta { grid-area: cta; align-self: start; display: flex; flex-direction: column; gap: 2rem; }
+        }
         @media (max-width: 768px) {
             .about-body-inner { display: flex; flex-direction: column; }
             .about-sidebar { order: -1; }
@@ -77,6 +87,9 @@
                     <img src="images/hogan headshot on gold.png" alt="Sarah Hogan, CPA" class="about-headshot">
                     <span class="about-headshot-caption">Sarah Hogan &nbsp;·&nbsp; Owner</span>
                 </div>
+            </div>
+
+            <div class="about-sidebar-cta">
                 <div class="sidebar-contact">
                     <h3>Work with Sarah</h3>
                     <p>Ready to talk through what your business needs? Schedule a free consultation.</p>
