@@ -148,13 +148,26 @@ a { text-decoration: none; color: inherit; }
     opacity: 1;
 }
 .nav-logo-text {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.35rem;
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    color: var(--white);
+    display: flex;
+    flex-direction: column;
     margin-left: 0.75rem;
-    line-height: 1.2;
+    line-height: 1;
+    gap: 3px;
+}
+.nav-logo-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.65rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--white);
+}
+.nav-logo-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.54rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
 }
 .logo-name {
     font-family: var(--sans);
