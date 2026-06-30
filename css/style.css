@@ -636,6 +636,11 @@ a { text-decoration: none; color: inherit; }
     padding: 6rem 2rem;
     border-top: 1px solid var(--cream2);
 }
+.testimonial-band--trust {
+    background: var(--white);
+    border-bottom: 1px solid var(--cream2);
+    padding: 4rem 2rem;
+}
 
 .testimonial-inner {
     max-width: 780px;
