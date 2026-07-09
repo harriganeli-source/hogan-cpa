@@ -11,7 +11,7 @@
     try { sessionStorage.setItem('hoganIntroSeen', '1'); } catch (e) {}
     document.body.classList.add('intro-lock');
 
-    var finished = false;
+    var finished = false, skipping = false;
     function finish() {
         if (finished) return;
         finished = true;
@@ -20,6 +20,15 @@
         overlay.remove();
     }
     setTimeout(finish, 6000); // safety net: never trap the visitor
+
+    // Click/tap anywhere skips straight to the site
+    overlay.addEventListener('pointerdown', function () {
+        if (finished || skipping) return;
+        skipping = true;
+        overlay.style.transition = 'opacity 0.25s ease';
+        overlay.style.opacity = '0';
+        setTimeout(finish, 250);
+    });
 
     // Center the mark, sized to the viewport
     var vw = window.innerWidth, vh = window.innerHeight;
@@ -34,7 +43,7 @@
         new Promise(function (r) { setTimeout(r, 1900); }), // strokes end ~1.72s, hold a beat
         fontsReady // nav must have final layout before we measure the target
     ]).then(function () {
-        if (finished) return;
+        if (finished || skipping) return;
         var img = document.querySelector('.nav-logo-mark');
         var t = img && img.getBoundingClientRect();
         if (!t || !t.width) { finish(); return; }
