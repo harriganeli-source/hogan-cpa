@@ -1155,3 +1155,90 @@ a { text-decoration: none; color: inherit; }
 
     .form-row { flex-direction: column; }
 }
+
+/* ---- Services quick-nav ribbon (added for Sarah's go-live punch list) ---- */
+.svc-ribbon {
+    background: var(--cream);
+    border-bottom: 1px solid var(--cream2);
+    box-shadow: 0 6px 18px rgba(92, 46, 96, 0.07);
+    position: relative;
+    z-index: 5;
+}
+.svc-ribbon-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 1.4rem;
+}
+.svc-ribbon-label {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold2);
+    margin-right: 0.4rem;
+}
+.svc-ribbon a {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--dark);
+    text-decoration: none;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+}
+.svc-ribbon a:hover { color: var(--dark2); border-bottom-color: var(--gold); }
+
+/* anchor targets clear the sticky header when jumped to */
+.service-section { scroll-margin-top: 90px; }
+
+/* Prior MDL experience as a clean list */
+.service-item--wide { grid-column: 1 / -1; }
+.mdl-list {
+    list-style: none;
+    margin: 0.6rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 2rem;
+}
+.mdl-list li {
+    font-family: var(--sans);
+    font-size: 0.92rem;
+    color: var(--slate);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+}
+.mdl-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+.mdl-note { color: var(--muted); font-style: italic; }
+@media (max-width: 640px) {
+    .mdl-list { grid-template-columns: 1fr; }
+    .svc-ribbon-inner { padding: 0.85rem 1.25rem; }
+}
+
+/* ---- Contact form result message ---- */
+.form-result {
+    margin-top: 1rem;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+.form-result:empty { display: none; }
+.form-result.is-success { color: var(--dark); font-weight: 500; }
+.form-result.is-error { color: #b0402f; }

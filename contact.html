@@ -24,8 +24,8 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="nav-actions">
-                <a href="https://cp9.cpasitesolutions.com/~hogancpa/clientportal.php" target="_blank" class="btn-portal">Client Portal</a>
-                <a href="https://www.securefirmportal.com/SecureSend/Send/146442" onclick="window.open('https://www.securefirmportal.com/SecureSend/Send/146442','securesend','width=550,height=550,toolbar=0,menubar=0,location=1,status=1,scrollbars=1,resizable=1'); return false;" class="btn-send">Send a File</a>
+                <a href="coming-soon.html" class="btn-portal">Client Portal</a>
+                <a href="coming-soon.html"  class="btn-send">Send a File</a>
             </div>
             <button class="nav-toggle" aria-label="Menu">&#9776;</button>
         </nav>
@@ -33,8 +33,8 @@
             <a href="about.html">About</a>
             <a href="services.html">Services</a>
             <a href="contact.html">Contact</a>
-            <a href="https://cp9.cpasitesolutions.com/~hogancpa/clientportal.php" target="_blank">Client Portal</a>
-            <a href="https://www.securefirmportal.com/SecureSend/Send/146442" onclick="window.open('https://www.securefirmportal.com/SecureSend/Send/146442','securesend','width=550,height=550,toolbar=0,menubar=0,location=1,status=1,scrollbars=1,resizable=1'); return false;">Send a File</a>
+            <a href="coming-soon.html">Client Portal</a>
+            <a href="coming-soon.html" >Send a File</a>
         </div>
     </header>
 
@@ -77,27 +77,32 @@
 
                 <div class="contact-portal-links">
                     <p style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem;">Existing clients</p>
-                    <a href="https://cp9.cpasitesolutions.com/~hogancpa/clientportal.php" target="_blank">&#8594; &nbsp;Log in to the Client Portal</a>
-                    <a href="https://www.securefirmportal.com/SecureSend/Send/146442" onclick="window.open('https://www.securefirmportal.com/SecureSend/Send/146442','securesend','width=550,height=550,toolbar=0,menubar=0,location=1,status=1,scrollbars=1,resizable=1'); return false;">&#8594; &nbsp;Send a file securely</a>
+                    <a href="coming-soon.html">&#8594; &nbsp;Log in to the Client Portal</a>
+                    <a href="coming-soon.html" >&#8594; &nbsp;Send a file securely</a>
                 </div>
             </div>
 
             <div class="contact-form-wrapper">
                 <h3>Send a message</h3>
-                <form class="contact-form" action="mailto:sarah@hogancpafirm.com" method="post" enctype="text/plain">
+                <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <!-- TODO(Eli): create the endpoint key at web3forms.com using sarah@hogancpafirm.com, paste it below. Until then the form will not deliver. -->
+                    <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY">
+                    <input type="hidden" name="subject" value="New inquiry from hogancpafirm.com">
+                    <input type="hidden" name="from_name" value="Hogan CPA Firm website">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="first-name">First Name</label>
-                            <input type="text" id="first-name" name="first_name" placeholder="Jane">
+                            <input type="text" id="first-name" name="first_name" placeholder="Jane" required>
                         </div>
                         <div class="form-group">
                             <label for="last-name">Last Name</label>
-                            <input type="text" id="last-name" name="last_name" placeholder="Smith">
+                            <input type="text" id="last-name" name="last_name" placeholder="Smith" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="jane@example.com">
+                        <input type="email" id="email" name="email" placeholder="jane@example.com" required>
                     </div>
                     <div class="form-group">
                         <label for="service">What can we help with?</label>
@@ -115,12 +120,13 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="Tell us a little about your situation..."></textarea>
+                        <textarea id="message" name="message" placeholder="Tell us a little about your situation..." required></textarea>
                     </div>
-                    <p class="form-note">We'll get back to you within one business day. For sensitive documents, please use the <a href="https://www.securefirmportal.com/SecureSend/Send/146442" onclick="window.open('https://www.securefirmportal.com/SecureSend/Send/146442','securesend','width=550,height=550,toolbar=0,menubar=0,location=1,status=1,scrollbars=1,resizable=1'); return false;" style="color: var(--gold2);">secure file transfer</a> instead of this form.</p>
+                    <p class="form-note">We'll get back to you within one business day. For sensitive documents, please use the <a href="coming-soon.html"  style="color: var(--gold2);">secure file transfer</a> instead of this form.</p>
                     <div class="form-submit">
                         <button type="submit" class="btn-primary">Send Message</button>
                     </div>
+                    <p class="form-result" id="form-result" role="status" aria-live="polite"></p>
                 </form>
             </div>
 
@@ -139,8 +145,8 @@
                 <a href="about.html">About</a>
                 <a href="services.html">Services</a>
                 <a href="contact.html">Contact</a>
-                <a href="https://cp9.cpasitesolutions.com/~hogancpa/clientportal.php" target="_blank">Client Portal</a>
-                <a href="https://www.securefirmportal.com/SecureSend/Send/146442" onclick="window.open('https://www.securefirmportal.com/SecureSend/Send/146442','securesend','width=550,height=550,toolbar=0,menubar=0,location=1,status=1,scrollbars=1,resizable=1'); return false;">Send a File</a>
+                <a href="coming-soon.html">Client Portal</a>
+                <a href="coming-soon.html" >Send a File</a>
             </div>
         </div>
         <div class="footer-base">
@@ -152,6 +158,36 @@
         const toggle = document.querySelector('.nav-toggle');
         const menu = document.querySelector('.nav-mobile-menu');
         toggle.addEventListener('click', () => menu.classList.toggle('open'));
+
+        // Contact form: submit to Web3Forms, keep the visitor on the page.
+        const form = document.getElementById('contact-form');
+        const result = document.getElementById('form-result');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            const original = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            result.className = 'form-result';
+            result.textContent = '';
+            try {
+                const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+                const data = await res.json();
+                if (res.ok && data.success) {
+                    form.reset();
+                    result.classList.add('is-success');
+                    result.textContent = 'Thank you. Your message has been sent, and Sarah will be in touch within one business day.';
+                } else {
+                    throw new Error(data.message || 'Submit failed');
+                }
+            } catch (err) {
+                result.classList.add('is-error');
+                result.textContent = 'Something went wrong. Please email sarah@hogancpafirm.com or call 850-680-6171.';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = original;
+            }
+        });
     </script>
     <script src="js/logo-rotate.js"></script>
 </body>
