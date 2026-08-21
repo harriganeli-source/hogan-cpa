@@ -16,19 +16,34 @@
         @media (min-width: 769px) {
             .about-body-inner {
                 grid-template-columns: 2fr 1fr;
-                grid-template-areas: "text photo" "text cta";
-                grid-template-rows: auto 1fr;
+                grid-template-areas: "text rail";
+                align-items: start;
             }
-            .about-body-text  { grid-area: text; }
-            .about-sidebar    { grid-area: photo; position: sticky; top: 100px; }
-            .about-sidebar-cta { grid-area: cta; align-self: start; display: flex; flex-direction: column; gap: 2rem; }
+            .about-body-text { grid-area: text; }
+            .about-rail {
+                grid-area: rail;
+                position: sticky;
+                top: 100px;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
         }
         @media (max-width: 768px) {
             .about-body-inner { display: flex; flex-direction: column; }
+            .about-rail { display: contents; }
             .about-sidebar { order: -1; }
             .about-sidebar-photo { text-align: center; margin-bottom: 2rem; }
             .about-headshot { max-width: 200px; }
         }
+        .testi-rotator { position: relative; }
+        .testi-slide { position: absolute; top: 50%; left: 0; right: 0; margin: 0; opacity: 0; transform: translateY(-50%); transition: opacity .4s ease; pointer-events: none; }
+        .testi-slide.is-active { opacity: 1; pointer-events: auto; transition: opacity .5s ease .38s; }
+        .testi-slide .testimonial-quote { font-size: clamp(1.3rem, 2.2vw, 1.7rem); margin-bottom: 1.4rem; }
+        .testi-dots { display: flex; gap: 10px; justify-content: center; margin-top: 2rem; }
+        .testi-dot { width: 9px; height: 9px; border-radius: 50%; border: 0; padding: 0; background: rgba(92,46,96,.25); cursor: pointer; transition: background .2s ease, transform .2s ease; }
+        .testi-dot.is-active { background: #5C2E60; transform: scale(1.15); }
+        @media (prefers-reduced-motion: reduce) { .testi-slide { transition: none; } }
     </style>
 </head>
 <body>
@@ -39,20 +54,14 @@
             <ul class="nav-links">
                 <li><a href="about.html">About</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html">Get in touch</a></li>
             </ul>
-            <div class="nav-actions">
-                <a href="coming-soon.html" class="btn-portal">Client Portal</a>
-                <a href="coming-soon.html"  class="btn-send">Send a File</a>
-            </div>
             <button class="nav-toggle" aria-label="Menu">&#9776;</button>
         </nav>
         <div class="nav-mobile-menu">
             <a href="about.html">About</a>
             <a href="services.html">Services</a>
-            <a href="contact.html">Contact</a>
-            <a href="coming-soon.html">Client Portal</a>
-            <a href="coming-soon.html" >Send a File</a>
+            <a href="contact.html">Get in touch</a>
         </div>
     </header>
 
@@ -76,32 +85,42 @@
                 <h2>On being reachable</h2>
                 <p>Responsiveness is something I feel strongly about. The most common reason people leave their CPA is that they send an email and don't hear back for days — or at all. I know how much stress the IRS and tax season can create, and a big part of my job is making sure you're never navigating that alone. When you reach out, you'll hear from me.</p>
 
-                <div class="about-quote" style="margin-top: 3rem;">
-                    <blockquote>"Sarah has been a trusted advisor to me for many years. While her accounting and tax expertise are exceptional, what I value most is her ability to understand the realities of running a business. She has helped me navigate the complexities of operating across multiple state jurisdictions, providing clear guidance on the accounting, tax, and compliance challenges that come with a multi-state business. She doesn't just know the numbers, she understands the story behind them. Her practical insight, business intuition, and personal commitment make her an outstanding CPA and trusted advisor."</blockquote>
-                    <cite>Aaron Hayek,<br><strong>ChemPro Services, Inc.</strong></cite>
-                </div>
             </div>
 
-            <div class="about-sidebar">
-                <div class="about-sidebar-photo">
-                    <img src="images/hogan headshot on gold.png" alt="Sarah Hogan, CPA" class="about-headshot">
-                    <span class="about-headshot-caption">Sarah Hogan &nbsp;·&nbsp; Owner</span>
-                </div>
-            </div>
-
-            <div class="about-sidebar-cta">
-                <div class="sidebar-contact">
-                    <h3>Work with Sarah</h3>
-                    <p>Ready to talk through what your business needs? Schedule a free consultation.</p>
-                    <a href="contact.html" class="btn-primary">Schedule a Consultation</a>
-                </div>
-                <div class="sidebar-tools">
-                    <h4>Client Tools</h4>
-                    <div class="sidebar-tools-links">
-                        <a href="coming-soon.html">&#8594; &nbsp;Client Portal</a>
-                        <a href="coming-soon.html" >&#8594; &nbsp;Send a File Securely</a>
+            <div class="about-rail">
+                <div class="about-sidebar">
+                    <div class="about-sidebar-photo">
+                        <img src="images/hogan headshot on gold.png" alt="Sarah Hogan, CPA" class="about-headshot">
+                        <span class="about-headshot-caption">Sarah Hogan &nbsp;·&nbsp; Owner</span>
                     </div>
                 </div>
+                <div class="about-sidebar-cta">
+                    <div class="sidebar-contact">
+                        <h3>Work with Sarah</h3>
+                        <p>Ready to talk through what your business needs? Schedule a free consultation.</p>
+                        <a href="contact.html" class="btn-primary">Schedule a Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS (rotating, full quotes) -->
+    <section class="testimonial-band" id="testimonials" style="background:#f2eaf5;">
+        <div class="testimonial-inner">
+            <div class="testi-rotator" data-testi-rotator>
+                <figure class="testi-slide is-active">
+                    <blockquote class="testimonial-quote">"Sarah has been a trusted advisor to me for many years. While her accounting and tax expertise are exceptional, what I value most is her ability to understand the realities of running a business. She has helped me navigate the complexities of operating across multiple state jurisdictions, providing clear guidance on the accounting, tax, and compliance challenges that come with a multi-state business. She doesn't just know the numbers, she <strong>understands the story behind them.</strong> Her practical insight, business intuition, and personal commitment make her an outstanding CPA and trusted advisor."</blockquote>
+                    <cite class="testimonial-cite">Aaron Hayek &nbsp;&middot;&nbsp; ChemPro Services, Inc.</cite>
+                </figure>
+                <figure class="testi-slide">
+                    <blockquote class="testimonial-quote">"Sarah Hogan has been a trusted advisor to me and my businesses. She has helped with startup formation, complex accounting matters, and ongoing financial guidance, always providing thoughtful advice and timely support. Sarah is responsive, knowledgeable, and dependable. I value having a CPA I can trust, and I know my businesses are in <strong>good hands with her.</strong>"</blockquote>
+                    <cite class="testimonial-cite">Adam Morgan &nbsp;&middot;&nbsp; Synergy Partners LLC</cite>
+                </figure>
+            </div>
+            <div class="testi-dots">
+                <button class="testi-dot is-active" type="button" aria-label="Show testimonial 1"></button>
+                <button class="testi-dot" type="button" aria-label="Show testimonial 2"></button>
             </div>
         </div>
     </section>
@@ -117,9 +136,7 @@
             <div class="footer-links">
                 <a href="about.html">About</a>
                 <a href="services.html">Services</a>
-                <a href="contact.html">Contact</a>
-                <a href="coming-soon.html">Client Portal</a>
-                <a href="coming-soon.html" >Send a File</a>
+                <a href="contact.html">Get in touch</a>
             </div>
         </div>
         <div class="footer-base">
@@ -133,5 +150,45 @@
         toggle.addEventListener('click', () => menu.classList.toggle('open'));
     </script>
     <script src="js/logo-rotate.js"></script>
+    <script>
+    // Testimonials rotator
+    (function(){
+        var rot = document.querySelector('[data-testi-rotator]');
+        if(!rot) return;
+        var slides = [].slice.call(rot.querySelectorAll('.testi-slide'));
+        var dotsWrap = rot.parentNode.querySelector('.testi-dots');
+        var dots = dotsWrap ? [].slice.call(dotsWrap.querySelectorAll('.testi-dot')) : [];
+        if(slides.length < 2) return;
+        var i = 0, timer = null, DELAY = 7000;
+        var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function sizeRotator(){
+            rot.style.minHeight = '';
+            var h = 0;
+            slides.forEach(function(s){
+                s.style.position = 'static';
+                if(s.offsetHeight > h) h = s.offsetHeight;
+                s.style.position = '';
+            });
+            rot.style.minHeight = h + 'px';
+        }
+        function go(n){
+            i = (n + slides.length) % slides.length;
+            slides.forEach(function(s, idx){ s.classList.toggle('is-active', idx === i); });
+            dots.forEach(function(d, idx){ d.classList.toggle('is-active', idx === i); });
+        }
+        function next(){ go(i + 1); }
+        function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+        function start(){ if(reduce) return; stop(); timer = setInterval(next, DELAY); }
+
+        dots.forEach(function(d, idx){ d.addEventListener('click', function(){ go(idx); start(); }); });
+        rot.addEventListener('mouseenter', stop);
+        rot.addEventListener('mouseleave', start);
+
+        sizeRotator(); go(0); start();
+        window.addEventListener('load', function(){ sizeRotator(); });
+        window.addEventListener('resize', sizeRotator);
+    })();
+    </script>
 </body>
 </html>

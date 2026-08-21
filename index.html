@@ -97,6 +97,16 @@
         #intro-overlay.draw .fin { animation: finshow 0.15s linear both 1.72s; }
         @keyframes finshow { to { opacity: 1; } }
         @keyframes hpen { to { stroke-dashoffset: 0; } }
+
+        /* ---- Testimonials rotator ---- */
+        .testi-rotator { position: relative; }
+        .testi-slide { position: absolute; top: 50%; left: 0; right: 0; margin: 0; opacity: 0; transform: translateY(-50%); transition: opacity .4s ease; pointer-events: none; }
+        .testi-slide.is-active { opacity: 1; pointer-events: auto; transition: opacity .5s ease .38s; }
+        .testi-slide .testimonial-quote { font-size: clamp(1.3rem, 2.2vw, 1.7rem); margin-bottom: 1.4rem; }
+        .testi-dots { display: flex; gap: 10px; justify-content: center; margin-top: 2rem; }
+        .testi-dot { width: 9px; height: 9px; border-radius: 50%; border: 0; padding: 0; background: rgba(92,46,96,.25); cursor: pointer; transition: background .2s ease, transform .2s ease; }
+        .testi-dot.is-active { background: #5C2E60; transform: scale(1.15); }
+        @media (prefers-reduced-motion: reduce) { .testi-slide { transition: none; } }
     </style>
 </head>
 <body class="home">
@@ -136,14 +146,14 @@
             <ul class="nav-links">
                 <li><a href="about.html">About</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html">Get in touch</a></li>
             </ul>
             <button class="nav-toggle" aria-label="Menu">&#9776;</button>
         </nav>
         <div class="nav-mobile-menu">
             <a href="about.html">About</a>
             <a href="services.html">Services</a>
-            <a href="contact.html">Contact</a>
+            <a href="contact.html">Get in touch</a>
         </div>
     </header>
 
@@ -198,18 +208,26 @@
                 <p>That's the part I love about this work. Getting into the details, finding what's being missed, and giving you a clear picture of where your business stands, and where it's going.</p>
                 <a href="about.html" class="link-gold">Full bio &rarr;</a>
             </div>
-            <div class="about-snap-quote">
-                <blockquote>"She doesn't just know the numbers, she <strong>understands the story behind them.</strong>"</blockquote>
-                <cite>Aaron Hayek, ChemPro Services, Inc.</cite>
-            </div>
         </div>
     </section>
 
-    <!-- TESTIMONIAL: ADAM MORGAN -->
-    <section class="testimonial-band testimonial-band--trust">
+    <!-- TESTIMONIALS (rotating) -->
+    <section class="testimonial-band" id="testimonials" style="background:#f2eaf5;">
         <div class="testimonial-inner">
-            <blockquote class="testimonial-quote">"Sarah is responsive, knowledgeable, and dependable. I value having a CPA I can trust, and I know my businesses are in good hands with her."</blockquote>
-            <cite class="testimonial-cite">Adam Morgan<br><strong>Synergy Partners LLC</strong></cite>
+            <div class="testi-rotator" data-testi-rotator>
+                <figure class="testi-slide is-active">
+                    <blockquote class="testimonial-quote">"Her practical insight, business intuition, and personal commitment make her an <strong>outstanding CPA and trusted advisor.</strong>"</blockquote>
+                    <cite class="testimonial-cite">Aaron Hayek &nbsp;&middot;&nbsp; ChemPro Services, Inc.</cite>
+                </figure>
+                <figure class="testi-slide">
+                    <blockquote class="testimonial-quote">"Sarah is responsive, knowledgeable, and dependable. I value having a CPA I can trust, and I know my businesses are in <strong>good hands with her.</strong>"</blockquote>
+                    <cite class="testimonial-cite">Adam Morgan &nbsp;&middot;&nbsp; Synergy Partners LLC</cite>
+                </figure>
+            </div>
+            <div class="testi-dots">
+                <button class="testi-dot is-active" type="button" aria-label="Show testimonial 1"></button>
+                <button class="testi-dot" type="button" aria-label="Show testimonial 2"></button>
+            </div>
         </div>
     </section>
 
@@ -246,16 +264,6 @@
         </div>
     </section>
 
-    <!-- TESTIMONIAL -->
-    <section class="testimonial-band">
-        <div class="testimonial-inner">
-            <blockquote class="testimonial-quote">
-                "Sarah has been a trusted advisor to me for many years. While her accounting and tax expertise are exceptional, what I value most is her ability to understand the realities of running a business. She has helped me navigate the complexities of operating across multiple state jurisdictions, providing clear guidance on accounting, tax, and compliance. She doesn't just know the numbers, she <strong>understands the story behind them.</strong>"
-            </blockquote>
-            <cite class="testimonial-cite">Aaron Hayek &nbsp;·&nbsp; ChemPro Services, Inc.</cite>
-        </div>
-    </section>
-
     <!-- CTA -->
     <section class="cta-band">
         <div class="cta-inner">
@@ -280,7 +288,7 @@
             <div class="footer-links">
                 <a href="about.html">About</a>
                 <a href="services.html">Services</a>
-                <a href="contact.html">Contact</a>
+                <a href="contact.html">Get in touch</a>
             </div>
         </div>
         <div class="footer-base">
@@ -354,5 +362,45 @@
 
     <script src="js/logo-rotate.js"></script>
     <script src="js/intro.js"></script>
+    <script>
+    // Testimonials rotator
+    (function(){
+        var rot = document.querySelector('[data-testi-rotator]');
+        if(!rot) return;
+        var slides = [].slice.call(rot.querySelectorAll('.testi-slide'));
+        var dotsWrap = rot.parentNode.querySelector('.testi-dots');
+        var dots = dotsWrap ? [].slice.call(dotsWrap.querySelectorAll('.testi-dot')) : [];
+        if(slides.length < 2) return;
+        var i = 0, timer = null, DELAY = 7000;
+        var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function sizeRotator(){
+            rot.style.minHeight = '';
+            var h = 0;
+            slides.forEach(function(s){
+                s.style.position = 'static';
+                if(s.offsetHeight > h) h = s.offsetHeight;
+                s.style.position = '';
+            });
+            rot.style.minHeight = h + 'px';
+        }
+        function go(n){
+            i = (n + slides.length) % slides.length;
+            slides.forEach(function(s, idx){ s.classList.toggle('is-active', idx === i); });
+            dots.forEach(function(d, idx){ d.classList.toggle('is-active', idx === i); });
+        }
+        function next(){ go(i + 1); }
+        function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+        function start(){ if(reduce) return; stop(); timer = setInterval(next, DELAY); }
+
+        dots.forEach(function(d, idx){ d.addEventListener('click', function(){ go(idx); start(); }); });
+        rot.addEventListener('mouseenter', stop);
+        rot.addEventListener('mouseleave', start);
+
+        sizeRotator(); go(0); start();
+        window.addEventListener('load', function(){ sizeRotator(); });
+        window.addEventListener('resize', sizeRotator);
+    })();
+    </script>
 </body>
 </html>
