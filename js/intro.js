@@ -16,8 +16,14 @@
         if (finished) return;
         finished = true;
         document.body.classList.remove('intro-lock');
+        overlay.style.pointerEvents = 'none';
+        // Show the real nav mark FIRST, and keep the overlay mark sitting on top of it
+        // (same spot, same size) for a beat, so the browser has painted the nav mark
+        // before the overlay goes. Removing both in one frame left a blank slot.
+        // Plain timer, not rAF: rAF stalls in a background tab and would park the overlay.
+        root.classList.add('intro-out');
         root.classList.remove('intro-play');
-        overlay.remove();
+        setTimeout(function () { overlay.remove(); root.classList.remove('intro-out'); }, 160);
     }
     setTimeout(finish, 6000); // safety net: never trap the visitor
 
@@ -41,8 +47,11 @@
     var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
     var navImg = document.querySelector('.nav-logo-mark');
     var navReady = new Promise(function (r) { // the real mark must be painted before we hand off, or the slot is empty on slow connections
-        if (!navImg || (navImg.complete && navImg.naturalWidth)) { r(); return; }
-        navImg.addEventListener('load', r, { once: true });
+        function decoded() { // loaded is not painted: force the decode so the swap has pixels ready
+            if (navImg && navImg.decode) navImg.decode().then(r, r); else r();
+        }
+        if (!navImg || (navImg.complete && navImg.naturalWidth)) { decoded(); return; }
+        navImg.addEventListener('load', decoded, { once: true });
         navImg.addEventListener('error', r, { once: true });
         setTimeout(r, 2500);
     });

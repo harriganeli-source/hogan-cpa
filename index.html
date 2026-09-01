@@ -80,8 +80,8 @@
         /* ---- Signature intro ---- */
         #intro-overlay { position: fixed; inset: 0; z-index: 2000; background: var(--dark); transition: background-color 0.65s ease; }
         #intro-overlay.reveal { background-color: transparent; }
-        html:not(.intro-play) #intro-overlay { display: none; }
-        .intro-play .nav-logo-mark { visibility: hidden; }
+        html:not(.intro-play):not(.intro-out) #intro-overlay { display: none; }
+        .intro-play .nav-logo-mark { opacity: 0; } /* opacity, not visibility: keeps the mark decoded and painted, ready for the handoff */
         body.intro-lock { overflow: hidden; }
         #intro-mark { position: fixed; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
         #intro-mark svg { width: 100%; height: 100%; display: block; opacity: 0.92; }
