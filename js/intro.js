@@ -23,7 +23,7 @@
         // Plain timer, not rAF: rAF stalls in a background tab and would park the overlay.
         root.classList.add('intro-out');
         root.classList.remove('intro-play');
-        setTimeout(function () { overlay.remove(); root.classList.remove('intro-out'); }, 160);
+        setTimeout(function () { overlay.remove(); root.classList.remove('intro-out'); root.classList.remove('intro-landing'); }, 160);
     }
     setTimeout(finish, 6000); // safety net: never trap the visitor
 
@@ -64,6 +64,10 @@
         var img = document.querySelector('.nav-logo-mark');
         var t = img && img.getBoundingClientRect();
         if (!t || !t.width) { finish(); return; }
+        // Reveal the real nav mark NOW, while the overlay is still solid purple over it:
+        // it gets painted more than a second before the overlay goes, so the final swap
+        // is a no-op on screen no matter how slow the browser is to rasterize the image.
+        root.classList.add('intro-landing');
         mark.style.transition = 'transform 0.6s cubic-bezier(0.7, 0, 0.3, 1)';
         mark.style.transform = 'translate(' + t.left + 'px, ' + t.top + 'px) scale(' + (t.height / h) + ')';
         setTimeout(function () {
