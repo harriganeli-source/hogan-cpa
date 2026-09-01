@@ -39,9 +39,17 @@
     requestAnimationFrame(function () { overlay.classList.add('draw'); });
 
     var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    var navImg = document.querySelector('.nav-logo-mark');
+    var navReady = new Promise(function (r) { // the real mark must be painted before we hand off, or the slot is empty on slow connections
+        if (!navImg || (navImg.complete && navImg.naturalWidth)) { r(); return; }
+        navImg.addEventListener('load', r, { once: true });
+        navImg.addEventListener('error', r, { once: true });
+        setTimeout(r, 2500);
+    });
     Promise.all([
         new Promise(function (r) { setTimeout(r, 1900); }), // strokes end ~1.72s, hold a beat
-        fontsReady // nav must have final layout before we measure the target
+        fontsReady, // nav must have final layout before we measure the target
+        navReady
     ]).then(function () {
         if (finished || skipping) return;
         var img = document.querySelector('.nav-logo-mark');
